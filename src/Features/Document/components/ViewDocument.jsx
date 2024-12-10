@@ -77,17 +77,20 @@ const ViewDocument = () => {
   const { url } = location1.state || {};
   return (
     <>
-      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+      <div className=' h-[100vh] p-10 overflow-scroll no-scrollbar'>
 
-        <Viewer
-          fileUrl={url}
-          plugins={[
-            // Register plugins
-            defaultLayoutPluginInstance,
-          ]}
-          
-        />
-      </Worker>
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+
+          <Viewer
+            fileUrl={url}
+            plugins={[
+              // Register plugins
+              defaultLayoutPluginInstance,
+            ]}
+
+          />
+        </Worker>
+      </div>
     </>
   )
 }
