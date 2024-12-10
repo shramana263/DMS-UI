@@ -4,26 +4,31 @@ import DisplayArea from '../../Document/components/DisplayArea'
 import { useDocumentContext } from '../../Auth/contexts/DocumentContext'
 
 
-export default function PdfGenerator({url}) {
+export default function PdfGenerator({ url }) {
 
     // const [selectedImages, setSelectedImages] = useState([]);
 
-    const { setSelectedImages} = useDocumentContext()
-    
+    const { setSelectedImages } = useDocumentContext()
 
-    const handleCheckboxChange=()=>{
-        // console.log("prev- ",selectedImages)
-        setSelectedImages(prev=>[...prev,url])
-        
-    }
 
-    
+    const handleCheckboxChange = () => {
+        setSelectedImages(prev => {
+            if (prev.includes(url)) {
+                return prev.filter(item => item !== url);
+            } else {
+                return [...prev, url];
+            }
+        });
+    };
+
+
+
     return (
         <>
-            <div className='relative rounded-full'>
-                <input type="checkbox" className='absolute top-3 right-3 h-6 w-6'
-                onClick={() => handleCheckboxChange()} />
-            </div>
+            {/* <div className='relative '> */}
+                <input type="checkbox" className='absolute top-3 right-3 h-6 w-6 border rounded-full shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]'
+                    onClick={() => handleCheckboxChange()} />
+            {/* </div> */}
         </>
     )
 

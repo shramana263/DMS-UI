@@ -39,13 +39,13 @@ import { useLocation } from 'react-router-dom';
 //   //   pdfDoc.getPage(1).then((page) => {
 //   //     const scale = 1.5; // Adjust zoom level
 //   //     const viewport = page.getViewport({ scale });
-    
+
 //   //     const canvas = document.createElement('canvas');
 //   //     canvas.height = viewport.height;
 //   //     canvas.width = viewport.width;
-    
+
 //   //     pdfContainer.appendChild(canvas);
-    
+
 //   //     const ctx = canvas.getContext('2d');
 //   //     page.render({ canvasContext: ctx, viewport });
 //   //   });
@@ -61,31 +61,37 @@ import { useLocation } from 'react-router-dom';
 //   );
 // };
 import React, { useState, useEffect } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+// Core viewer
+// import { Viewer } from '@react-pdf-viewer/core';
 
+// Plugins
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
-function ViewDocument({  }) {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+// Import styles
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import { Viewer, Worker } from '@react-pdf-viewer/core';
+const ViewDocument = () => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
   const location1 = useLocation();
   const { url } = location1.state || {};
-
-  useEffect(() => {
-    pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-  }, []);
-
   return (
-    <div>
-      <Document file={url} onLoadSuccess={onDocumentLoad}>
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p>Page {pageNumber} of {numPages}</p>
-    </div>
-  );
+    <>
+      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
 
-  function onDocumentLoad({ numPages }) {
-    setNumPages(numPages);
-  }
+        <Viewer
+          fileUrl={url}
+          plugins={[
+            // Register plugins
+            defaultLayoutPluginInstance,
+          ]}
+          
+        />
+      </Worker>
+    </>
+  )
 }
+// Create new plugin instance
+
 
 export default ViewDocument;

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useModalContext } from '../contexts/ModalContext'
 import PreviewModal from '../modal/PreviewModal'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import MultiImageToPdf from '../../DocumentConversion/pages/MultiImageToPdf'
 
 
 const icons = [
@@ -68,10 +69,10 @@ const DisplayArea = () => {
                         + New PDF
                     </div>
                     :
-                    <div className='font-bold flex justify-self-end items-center border-4 border-purple-800 rounded-lg text-purple-800 dark:border-purple-500 dark:text-purple-500 p-2'
+                    <div className=''
                     // onClick=}
                     >
-                        Create
+                        <MultiImageToPdf />
                     </div>
 
 
@@ -88,7 +89,7 @@ const DisplayArea = () => {
                                     <div className='relative h-40 w-40 group'>
                                         {
                                             // isConversion &&
-                                            <div className='absolute top-0 right-0 z-50 invisible group-hover:visible'>
+                                            <div className={`absolute top-0 right-0 z-50 ${isEmpty(selectedImages) ? 'invisible group-hover:visible' : ''} `}>
                                                 <PdfGenerator url={item.url} />
                                             </div>
                                         }
@@ -100,19 +101,23 @@ const DisplayArea = () => {
                                 </div>
 
                                 :
-                                <div className='h-40 w-40'>
+                                <div className='h-40 w-40' onDoubleClick={()=>{
+                                    if(item.mime_type=='application/pdf'){
+                                        handleClick(item.url)
+                                    }
+                                }}>
                                     {/* {icons && console.log('hello', icons.find((x)=> x.mime_type === item.mime_type))} */}
-
+                                    {/* <div className='border rounded flex justify-center items-center' onClick={() => handleClick(item.url)}>
+                                        Open PDF
+                                    </div> */}
 
                                     <img src={icons.find(x => x.mime_type == item.mime_type)?.url} alt="hello" className={`h-full w-full `} />
-                                    <div className='text-sm dark:text-fuchsia-50'>{item.original_name}</div>
+                                    <div className='text-sm dark:text-fuchsia-50 flex justify-center'>{item.original_name}</div>
                                 </div>
 
                         }
 
-                        {/* <div className='border rounded flex justify-center items-center' onClick={() => handleClick(item.url)}>
-                            Open PDF
-                        </div>  */}
+
 
                     </div>
                 ))
