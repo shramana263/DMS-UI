@@ -101,7 +101,7 @@ const MultiImageToPdf = () => {
     }, [])
     return (
         <>
-            <DisplayDocument />
+            {/* <DisplayDocument /> */}
             <div className='absolute hover:cursor-pointer top-[100px] right-10 z-50 border border-slate-600 bg-slate-600 text-white p-2 rounded-lg' onClick={handleName}>CREATE PDF</div>
             {
                 isNameForm &&

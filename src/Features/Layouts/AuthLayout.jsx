@@ -41,7 +41,7 @@ const AuthLayout = ({ children }) => {
              dark:bg-gradient-to-br dark:from-gray-900 dark:via-neutral-800 dark:to-fuchsia-800`}>
           <AuthNavbar />
           {/* <div className='mt-20'>AuthLayout</div> */}
-          <div className='mt-5 text-2xl ps-20 flex justify-left items-center'><span>Hello, </span><span>{authUser.data.name}</span></div>
+          <div className='mt-5 text-2xl ps-20 flex justify-left items-center dark:text-fuchsia-50'><span>Hello, </span><span>{authUser.data.name}</span></div>
           {/* <Home/> */}
           <main className=' ps-20 pe-20'>
 

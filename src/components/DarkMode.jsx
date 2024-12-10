@@ -10,14 +10,14 @@ const DarkMode = () => {
                 {
                     isDark ?
                         <>
-                            <div className='flex justify-center items-center motion-preset-pop' onClick={()=>setDark(false)}>
+                            <div className='flex justify-center items-center @click.animate-spin' onClick={()=>setDark(false)}>
 
                                 <MdOutlineLightMode />
                             </div>
                         </>
                         :
                         <>
-                            <div className='flex justify-center items-center motion-preset-pop'onClick={()=>setDark(true)}>
+                            <div className='flex justify-center items-center @click.animate-spin'onClick={()=>setDark(true)}>
 
                                 <MdOutlineDarkMode />
                             </div>

@@ -10,6 +10,7 @@ import { queryClient } from './queryClient.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { DocumentProvider } from './Features/Auth/contexts/DocumentContext.jsx'
 import { ThemeProvider } from './contexts/ThemeContext.jsx'
+import { ModalProvider } from './Features/Document/contexts/ModalContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -18,9 +19,11 @@ createRoot(document.getElementById('root')).render(
       <StateProvider>
         <ThemeProvider>
           <DocumentProvider>
-            <BrowserRouter>
-              <PlayGround />
-            </BrowserRouter>
+            <ModalProvider>
+              <BrowserRouter>
+                <PlayGround />
+              </BrowserRouter>
+            </ModalProvider>
           </DocumentProvider>
         </ThemeProvider>
       </StateProvider>

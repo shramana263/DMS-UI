@@ -78,7 +78,7 @@ const SourceToCanvas = ({ url }) => {
 
     return (
         <>
-            <div onClick={handleClick} className='flex justify-center items-center border rounded p-2'>
+            <div onClick={handleClick} className='flex justify-center items-center rounded p-2 bg-slate-600 text-slate-50 hover:cursor-pointer'>
                 export as pdf
                 <canvas className='h-44 w-44 hidden' ref={canvasRef}>
 

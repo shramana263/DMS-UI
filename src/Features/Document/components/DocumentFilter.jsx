@@ -24,7 +24,7 @@ const DocumentFilter = () => {
 
     return (
         <>
-            <div className='flex gap-3'>
+            <div className='flex gap-3 '>
 
                 {/* <div>This is DocumentFilter</div> */}
                 <FilterSelector inputType={inputType} setInputType={setInputType} />
@@ -43,11 +43,11 @@ const FilterSelector = ({ inputType, setInputType }) => {
     }
     return (
         <>
-            <select name="filterType" id="filterType" onChange={handleChange} className='bg-transparent focus:outline-none'>
+            <select name="filterType" id="filterType" onChange={handleChange} className='bg-transparent focus:outline-none dark:text-fuchsia-50'>
                 {
                     filterType && filterType.map((x, index) => (
 
-                        <option value={x.type} key={index}>
+                        <option value={x.type} key={index} className='dark:text-neutral-900'>
                             {x.name}
                         </option>
 
@@ -115,6 +115,6 @@ const SearchButton = ({ searchParam, inputType }) => {
     }
 
     return (
-        <span className='flex justify-center items-center border rounded-full shadow-md p-2' onClick={handleClick} ><FaArrowRight size={25} /></span>
+        <span className='flex justify-center items-center border rounded-full shadow-md p-2 dark:text-fuchsia-50' onClick={handleClick} ><FaArrowRight size={25} /></span>
     )
 }

@@ -11,22 +11,18 @@ import { Link, useNavigate } from 'react-router-dom'
 const AllDocuments = () => {
 
     const navigate = useNavigate()
-    const handleClick = () => {
-        navigate('/to-pdf')
-    }
+    // const handleClick = () => {
+    //     navigate('/to-pdf')
+    // }
 
     return (
         <>
-            <div className='w-full flex justify-between items-center'>
+            <div className='w-full flex justify-between items-center dark:text-fuchsia-50'>
 
                 <div className='flex justify-left items-center font-bold text-3xl mt-5' >
                     Your documents
                 </div>
-                <div className='font-bold flex justify-self-end items-center border-4 border-purple-800 rounded-lg text-purple-800 p-2'
-                    onClick={handleClick}
-                >
-                   + New PDF
-                </div>
+                
             </div>
 
             <DocumentFilter />
